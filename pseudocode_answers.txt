@@ -8,7 +8,7 @@ Because pseudocode is language-agnostic, I could also see larger teams that code
 
 2. If you run pseudocode on your computer what would happen?
 
-Likely, nothing! Or you’ll receive a ton of errors, but nothing will actually be read and rendered by your computer, because pseudocode isn’t a programming language, and doesn’t produce machine-readable code.
+It won't run, because pseudocode isn’t a programming language, and doesn’t produce machine-readable code.
 
 ---
 
@@ -16,30 +16,48 @@ Programming Assignment:
 
 1. Create a function that takes two numbers and prints out the greater number.
 
-INPUT the first number.
-INPUT the second number.
-IF the first number is greater than the second number,
-	PRINT the first number.
-ELSE if the second number is greater than the first number, 
-	PRINT the second number.
+INPUT the first number
+INPUT the second number
+IF the first number is greater than the second number
+	PRINT the first number
+ELSE if the second number is greater than the first number 
+	PRINT the second number
 
 2. Create a function that prints out the numbers from 1 to 100.
 
-INPUT the variable X.
-Set X’s value to 1.
-Increment X’s value by 1.
-WHILE X is less than or equal to 100,
-	PRINT X.
+INPUT number 
+INIT number = 1.
+WHILE number is less than or equal to 100
+	PRINT number
+	Increment number by 1.
+ENDWHILE
 
 3. Create a function that searches for a specific entry in a phonebook.
+(Note: I'm guessing we can't use any JS array methods like 'some,' 'indexOf,' 'filter,' etc, because they may not be available in other languages. I'm also not sure what the end result of this function should be. Should it return true/false? Should it return the entry? Or the entry's index in the phonebook array? Do we assume the phonebook array/object is already defined, or should we define/initialize it? I'm happy to adjust the formula as needed, but I'm not 100% sure what I'm expected to do, here.)
 
-INPUT an entry, and an array.
-SEARCH for the index of the entry.
-RETURN the index of the entry.
+Assuming that the phonebook array has already been defined, outside of the function scope...
+
+INPUT entry
+INIT index to 0 
+WHILE index is less than phonebook length
+	IF the value at index of phonebook equals entry
+		RETURN entry
+	ELSE
+		Increment index by 1
+	ENDIF
+RETURN 'Cannot find this entry.'
+ENDWHILE
 
 4. Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
 
-function findMe(entry, array) {
-	return array.indexOf(entry)
+function findInPhonebook(entry) {
+  var i = 0;
+  while (i < phonebook.length) {
+    if (phonebook[i] === entry) {
+      return entry;
+    }
+      i++;
+  }
+  return 'Cannot find this entry.';
 }
