@@ -1,0 +1,75 @@
+Exercises
+
+1. What is the main difference between a stack and a queue?
+
+The main difference between a stack and a queue is the order of elements entering and leaving the data structure. In a stack, the last item added is the first item to leave (Last In First Out, or LIFO), and in a queue, the first item added is the first item to leave (First In First Out, or FIFO).
+ 
+2. What are the similarities between stacks and queues?
+
+They're both ways of organizing elements in a data structure, and dictate what happens when new elements are added or removed. 
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+
+The UNDO functionality would call for a LIFO data structure, because you only want to undo the most recent change made, and work backward from there. The REDO functionality would also utilize a LIFO data structure, as (I imagine) each item that had been "undone" would be added to an empty "redo" array, and as you click "redo," you want to pull the most recently added item from the redo array back into the main array containing your copy. 
+Programming Questions
+You may program the following question in any language of your choice. Before you begin coding, write out a plan as to how you will solve the question.
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB". 
+function reverse(original) {
+  var newStack = [];
+  for (i = 0; i < original.length; i++) {
+    newStack.push(original[i])
+  }
+  var reversedString = '';
+  while (newStack.length > 0) {
+    reversedString += newStack.pop();
+  }
+  return reversedString
+};
+
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first. 
+To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be removed and returned.
+
+var veggies = ['broccoli', 'potatoes', 'beets', 'spinach', 'squash']
+
+
+function dequeue(items) {
+  items.shift();
+  return items;
+}
+
+function enqueue(item, items) {
+  items.push(item)
+  return items
+}
+
+function popQueue() {
+  var maxIndex = veggies.length - 1;
+  var lastItem = veggies[maxIndex];
+  var queue = [];
+  for (i = 0; i < maxIndex; i++) {
+    enqueue(veggies[i], queue)
+  }
+  veggies = queue;
+  return lastItem
+}
+
+popQueue(veggies)
+
+1. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+class Queue {
+  constructor() {
+    this.items = []
+  }
+
+  function dequeue() {
+    items.shift();
+    return items;
+  }
+
+  function enqueue(item) {
+    items.push(item)
+    return items
+  }
+
+}
