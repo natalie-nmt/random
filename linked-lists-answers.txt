@@ -1,0 +1,119 @@
+EXERCISES
+
+What are some pros and cons of using linked lists instead of arrays?
+Come up with a real world example of a linked list.
+
+Linked lists don't store data contiguously/in a linear fashion, so it's easier to add and store data wherever space exists, vs. forcibly making space for the data the way an array would require. However, it makes finding your data a bit more difficult, as there is no index; each "node" in the list just contains a reference to the next item in the list, so in order to find anything, you're required to traverse the entire list. There is no easy pinpointing of data.
+
+A real-life example might be a scavenger hunt—think of each "stop" as a node. You have no idea what's coming next, each stop only provides a reference/instructions to reach the next stop/node, and you can't get the full scope of the entire list until you've reached the end.
+
+If the question is actually asking for a real-world APPLICATION, then I would say linked lists are most likely to be found in large software applications where memory management is absolutely critical. 
+
+
+PROGRAMMING QUESTIONS
+
+You may program the following questions in any language of your choice (JavaScript, Ruby, etc.).
+
+Before beginning to code, write out a plan explaining how to solve the question. 
+
+The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
+
+(See comments!)
+
+FUNCTION push(element)
+CREATE node
+SET node.value TO element
+SET node.next TO null 
+
+IF the head node does not exist
+ THEN SET head to node 
+ELSE
+ SET current to head <-- You should set the current node to be the end or tail of the linked list, since the push function should always push a value to the END of a list. 
+ SET current.next to node
+END IF
+END FUNCTION
+
+---
+
+Code plan:
+For this push function, I need to identify the head of the linked list (if one exists), and traverse the list until I reach the tail. Then, I'll set the next value to be the "pushed" value. If a head doesn't exist (therefore the linked list doesn't exist), I'll create a head node and set it to the value of the pushed value.
+
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.current = null;
+  }
+
+  push(element) {
+    var node = new Node(element);
+    if (this.head === null) {
+      this.head = node;
+      this.current = this.head;
+      // If the head node doesn't exist, then we create it. Because the node now exists, and we're currently viewing that node, we also need to set the head node as our current node.
+    }
+    else {
+      this.current.next = node;
+      this.current = node;
+      // We don't want to set the current to the head, because that won't always be the case. So here, we're just defining that both the current node and whatever comes next are both nodes, with element and next properties.
+    }
+  }
+}
+
+class Node {
+  constructor(element) {
+    this.element = element;
+    this.next = null;
+  }
+}
+
+---
+
+Given an unsorted singly linked list, remove all duplicates from the linked list.
+Example
+Input: a -> c -> d -> d -> a
+Output: a -> c -> d
+
+Code plan: 
+Similar to the exercise in a past checkpoint, I'll traverse the linked list and use an empty array to hold a "count" of values. If the value of the node is 5, for example, I'll change the value at index 5 of the array to 1. An if/else statement will check to see if, for the next node, there is a value for that index in the array; if not, the node is not a duplicate and the function will continue traversing the list; if so, that means the next node IS a duplicate, and so the function will remove the "coordinates" to that duplicate node by skipping right over it, and going to the next-next node. 
+
+dedupe(data) {
+    var currentNode = this.head;
+    var counts = [];
+    counts[currentNode.data] = 1;
+    while (currentNode.next !== null) {
+      if (counts[currentNode.next.data] === 1) {
+        currentNode.next = currentNode.next.next;
+      }
+      else {
+        counts[currentNode.next.data] = 1; 
+        currentNode = currentNode.next       
+      }
+    }
+  }
+
+---
+
+Given an unsorted singly linked list, reverse it.
+Example
+Input: a -> b -> c -> d
+Output: d -> c -> b -> a
+
+Code plan:
+Traverse the linked list from the head to the tail, pushing the values of each node into an array. Then, traverse the linked list one more time, resetting the value of each node to the value of the most recently "popped" item in the stack/array. I'll need to add while statements to make sure that the traversing stops when a node value of null is encountered.  
+
+reverse(data) {
+    var tempStack = [];
+    var currentNode = this.head;
+    while (currentNode !== null) {
+      tempStack.push(currentNode.data);
+      currentNode = currentNode.next;
+    }
+    currentNode = this.head;
+    while (currentNode !== null) {
+      currentNode.data = tempStack.pop();
+      currentNode = currentNode.next;
+    }
+  }
+
+Here's a Repl link with all the functions, working: https://repl.it/@NatalieThomas/LinkedLIsts
