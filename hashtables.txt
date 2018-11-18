@@ -1,0 +1,192 @@
+## Questions
+
+> What is a hash table?
+
+A hash table is a data structure that stores key/value pairs. The value can be accessed by calling the associated key.
+
+> What is hashing?
+
+Hashing is a function that converts data (usually a string) into a hash code.
+
+> How does a hash table store data?
+
+Hash tables group and store data using an identifier—a hash code—that can be called upon to retrieve the data.
+
+> How are hash tables and objects different?
+
+While they are similar, hash tables are better at handling unpredictable amounts of data, while objects are better at handling and storing predictable, set types and amounts of data. Hash tables also rely on a hash function, which determines where to store the data. 
+
+> Determine whether you would use a hash table or an object to store each of the following pieces of data:
+
+- A list of pets and their unique names. - hash table
+- The name, age, and the birthday of your best friend. - object
+- The name and location of every company in a given city. - hash table
+- All of the books checked out from a library by a particular individual. - hash table
+- The primary and secondary phone numbers for a contact. - object
+
+> Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+
+```JavaScript
+class HashTable {
+  constructor() {
+    this.bucketCount = 10;
+    this.buckets = [];
+  }
+
+  hashcode(key) {
+    var hash = 0;
+    for (var i = 0; i < key.length; i++) {
+      hash += key.charCodeAt(i)
+    }
+    return hash;
+  }
+
+  add(customer) {
+    var key = this.hashcode(customer.phone);
+    var arrayIndex = key % this.bucketCount;
+    this.buckets[arrayIndex] = customer;
+  }
+  
+  get(phone) {
+    var key = this.hashcode(phone);
+    var arrayIndex = key % this.bucketCount;
+    return this.buckets[arrayIndex];
+  }
+}
+
+class Customer {
+  constructor(name, phone, address) {
+    this.name = name;
+    this.phone = phone;
+    this.address = address;
+  }
+};
+
+var natalie = new Customer('Natalie Thomas', '5556444764', '1200 Fake St SE');
+
+var hashTable = new HashTable();
+
+hashTable.add(natalie);
+
+console.log(hashTable);
+
+hashTable.get('5556444764')
+
+
+```
+
+> Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+```JavaScript
+
+class HashTable {
+  constructor() {
+    this.bucketCount = 10;
+    this.buckets = [];
+  }
+
+  hashcode(key) {
+    var hash = 0;
+    for (var i = 0; i < key.length; i++) {
+      hash += key.charCodeAt(i)
+    }
+    return hash;
+  }
+
+  add(product) {
+    var key = this.hashcode(product.sku);
+    var arrayIndex = key % this.bucketCount;
+    this.buckets[arrayIndex] = product;
+  }
+  
+  get(sku) {
+    var key = this.hashcode(sku);
+    var arrayIndex = key % this.bucketCount;
+    return this.buckets[arrayIndex];
+  }
+}
+
+class Product {
+  constructor(name, sku, quantity) {
+    this.name = name;
+    this.sku = sku;
+    this.quantity = quantity;
+  }
+
+  increase(amount) {
+    this.quantity = this.quantity + amount;
+  }
+
+  decrease(amount) {
+    this.quantity = this.quantity - amount;
+  }
+
+};
+
+var washer = new Product('washer', 52959602, 3);
+
+var hashTable = new HashTable();
+
+hashTable.add(washer);
+
+hashTable.get(52959602)
+
+washer.increase(11)
+
+console.log(washer)
+
+```
+
+> Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+
+```JavaScript
+
+class HashTable {
+  constructor() {
+    this.bucketCount = 100000;
+    this.buckets = [];
+  }
+
+  hashcode(key) {
+    var hash = 0;
+    for (var i = 0; i < key.length; i++) {
+      hash += key.charCodeAt(i)
+    }
+    return hash;
+  }
+
+  add(newspaper) {
+    var key = this.hashcode(newspaper.publisher + newspaper.publicationDate);
+    var arrayIndex = key % this.bucketCount;
+    this.buckets[arrayIndex] = newspaper;
+  }
+  
+  get(publicationDate, publisher) {
+    var prekey = publisher + publicationDate;
+    var key = this.hashcode(prekey);
+    var arrayIndex = key % this.bucketCount;
+    return this.buckets[arrayIndex];
+  }
+
+}
+
+class Newspaper {
+  constructor(publisher, publicationDate) {
+    this.publisher = publisher;
+    this.publicationDate = publicationDate;
+  }
+
+};
+
+var nyt = new Newspaper('New York Times', 'May 12, 2016',);
+
+var wsj = new Newspaper('Wall Street Journal', 'July 16, 2017')
+
+var hashTable = new HashTable();
+
+hashTable.add(nyt);
+hashTable.add(wsj);
+
+hashTable.get('New York Times','May 12, 2016')
+
+```
