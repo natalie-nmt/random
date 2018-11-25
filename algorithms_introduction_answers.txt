@@ -1,0 +1,62 @@
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+- Making coffee;
+
+GET filter
+INSERT filter into coffeemaker
+GET 8 cups water
+POUR 8 cups water into coffeemaker
+OPEN coffee bag
+GET 1/4 cup coffee grounds
+INSERT 1/4 cup coffee grounds into coffeemaker
+PUSH brew button
+ 
+
+- Washing dishes;
+
+GET dish soap
+GET dish scrubber
+TURN ON faucet to HOT
+FILL 75% of sink with hot water
+TURN OFF faucet
+PICK UP one dish
+SCRUB one dish until clean
+MOVE dish to drying rack
+REPEAT UNTIL there are 0 dishes in the sink
+DRAIN water from sink
+
+
+- A choice of your own.
+
+Making a PB&J sandwich:
+
+OPEN bag of bread
+GET 2 slices of bread
+GET plate
+PUT 2 slices of bread on plate
+GET and OPEN peanut butter jar
+GET and OPEN jelly jar
+GET knife
+INSERT knife into peanut butter
+Use knife to REMOVE 1 tbsp of peanut butter from jar
+SPREAD 1 tbsp peanut butter on 1 slice of bread
+Use knife to REMOVE 1 tbsp of jelly from jar
+IF bread slice DOES NOT contain peanut butter
+	SPREAD 1 tbsp jelly on slice of bread
+ELSE
+	SELECT next slice of bread
+	SPREAD 1 tbsp jelly on slice of bread
+FIND first bread slice
+JOIN first bread slice with second bread slice
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+Netflix and their recommendation algorithm—they have become famous for recommending relevant content based on a user's watch history.
+
+Reddit's thread/post hierarchy algorithm—Reddit shows relevant and popular content to users based on an algorithm.
+
+Waze's navigation algorithm—Waze uses a blend of user reports and real-time traffic data to provide users with the most time-efficient route from point A to point B, circumventing any obstacles in the way.
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An efficient algorithm would be one that follows the shortest amount of steps to accurately solve a problem, requires the least amount of change to solve the problem, or uses the least amount of resources to reach the solution. "Efficiency" may carry different meanings depending on the goals of your algorithm. 
