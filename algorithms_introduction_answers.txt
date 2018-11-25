@@ -19,10 +19,11 @@ GET dish scrubber
 TURN ON faucet to HOT
 FILL 75% of sink with hot water
 TURN OFF faucet
-PICK UP one dish
-SCRUB one dish until clean
-MOVE dish to drying rack
-REPEAT UNTIL there are 0 dishes in the sink
+WHILE dishes exist in sink
+	PICK UP one dish
+	SCRUB one dish until clean
+	MOVE dish to drying rack
+END WHILE
 DRAIN water from sink
 
 
@@ -46,6 +47,7 @@ IF bread slice DOES NOT contain peanut butter
 ELSE
 	SELECT next slice of bread
 	SPREAD 1 tbsp jelly on slice of bread
+END IF
 FIND first bread slice
 JOIN first bread slice with second bread slice
 
