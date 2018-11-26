@@ -59,7 +59,7 @@ FUNCTION fibonacci(number)
  END IF
 END FUNCTION
 
-O(1)
+O(2^n)
 
 9. Out of the code snippets you just saw, which is the most time efficient? 
 #6, O(n)
