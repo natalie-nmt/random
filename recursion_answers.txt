@@ -1,0 +1,66 @@
+1. Define and compare recursion and iteration.
+
+Recursion is the act of repeating repetitive steps to complete an end goal. In programming, a "recursive" function is a function that calls itself. Iteration is similar in that it is a way of looping through and repeating steps, but it's not calling itself over and over again to achieve the end goal, and generally saves computing time/space over a recursive solution.
+
+2. Name five algorithms that are commonly implemented by recursion.
+
+Binary search, merge sort, quick sort, breadth-first tree/graph traversal, and depth-first tree/graph traversal algorithms.
+
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+Use recursion when handling a combination of subtotals (functions that need to build off the result(s) of said function), as it is built to handle that type of function and can generally do so more cleanly than an iterative implementation. Avoid performing more straightforward loops using recursion, and avoid using recursion when a large input for the recursive function would result in repetitive calculations that could cause performance issues (ex. the recursive Fibonacci example).
+
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+
+FACTORIAL:
+
+Both set the stage with conditions (ex. If number is less than 0), first. In the recursive version, the conditions for both 1 and 0 must be defined, and then the result is built upon later in the function. The iterative function instead holds the resulting value in a variable, which grows with each iteration.
+
+MAXIMUM:
+
+The recursive version of this formula requires several variables, whereas the iterative version requires only one (currentMaximum). The recursive version also has to explicitly handle what to do if only 1 number exists in the array—so that adds two lines of code that are unnecessary in the iterative version—and it also shifts out the first item in the array, continually comparing that value while paring down the array until it reaches the end, and the maximum is found. The iterative version does this much more concisely, by simply storing the largest value found as it loops through the array in a variable, then returning that maximum value. It's a much more straightforward way of doing the same thing, without manipulating the array and initializing excessive variables.  
+
+FIBONACCI:
+
+In the recursive version, for any number higher than two, the function is recursively called twice with a new value (number - 2 and number -1, respectively), and then the values are added together; as the new "number" parameter is passed into the function, the function evaluates if the number is greater than two... and if so, the function is called twice again. This means that for larger numbers, where you may need to perform this function many times before getting to a resulting value of less than 2, you're performing a repetitive task an incredible amount of times before arriving at the final result.
+
+In the iterative version, you don't need to "handle" values less than 3—you can jump right into the loop starting at 3, and then keep track of the value using two variables—the current and previous numbers. The variables grow as the value is built upon in each loop iteration, and stored in the "current" variable. 
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+var favorites = [7,13,55,73,2,5]
+
+var count = function(numbers) {
+  if (numbers.length === 0) {
+    return 0;
+  }
+  else {
+    return numbers.pop() + count(numbers)
+  }
+  return total;
+}
+
+count(favorites)
+
+6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+var cars = 'racecar';
+
+var isPalindrome = function(string) {
+    var length = string.length;
+    if (length < 2) {
+        return true;
+    }
+    
+    if (string[0] === string[length - 1]) {
+        return isPalindrome( string.slice(1, length - 1) );
+    }
+    
+    return false;
+};
+
+isPalindrome('racecar')
+
+7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+
+Google's "did you mean..." prompt is a prompt to perform the search again—much like a function calling itself once data has been entered as a parameter. 
