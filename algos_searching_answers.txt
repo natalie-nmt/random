@@ -1,0 +1,87 @@
+1. What is a real-life scenario that uses linear search?
+
+You might flip through a cooking magazine (if you don't want to use the index, or if the index doesn't exist) until you find a recipe you'd like to make for dinner. Most likely, you'll search the magazine from the beginning to the end, one page at a time, until you find what you're looking for—very similar to trying to find a particular value in an array using a linear search.
+
+2. What is a real-life scenario that uses binary search?
+
+You might use a binary search if you read the index of that same magazine, and saw a recipe at page 39 that you want to read. So, you flip to the center of the magazine and look at the page number: 50. So then you select the middle page between 0 and 50: 25. And so on, until you get to the correct page. 
+
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+Seven.
+
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+Three.
+
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+I'd use a linear search, because a binary search can only be performed on a sorted collection. 
+
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+I'd use a binary search, because the list is sorted and because it's generally faster to find an item using binary search in a list/collection of that size.
+
+
+Programming Assignment:
+
+1. You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+var webster = ['Able', 'Albatross', 'Severed', 'Zebra']
+
+ function findInDictionary(dictionary, word) {
+   var result = null;
+   for (var i = 0; i < dictionary.length; i++) {
+     let value = dictionary[i];
+     if (value === word) {
+       result = i;
+       break;
+     }
+   }
+   if (result !== null) {
+     return word + ' can be found at index ' + result + ' in the dictionary.';
+   }
+   return 'That word does not exist in the dictionary.'
+ }
+
+ findInDictionary(webster, 'Albatross')
+
+2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+var bubbleEye = {
+  type: 'bubble eye',
+  color: 'orange and white'
+}
+
+var blackMoor = {
+  type: 'black moor',
+  color: 'black'
+}
+
+var comet = {
+  type: 'comet',
+  color: 'orange'
+}
+
+var fanTail = {
+  type: 'fanTail',
+  color: 'white-spotted'
+}
+
+var aquarium = [bubbleEye, blackMoor, fanTail, comet]
+
+function findGoldfish(tank, fish) {
+  var result = null;
+  for (var i = 0; i < tank.length; i++) {
+    let value = tank[i].color;
+    if (value === 'white-spotted') {
+      result = i;
+      break;
+    }
+  }
+  return "Caught the fish at index " + result
+}
+
+findGoldfish(aquarium, 'white-spotted')
+
+
