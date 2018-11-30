@@ -1,0 +1,49 @@
+1. Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(array)
+INIT variable swapped to zero
+INIT variable n to array length -1
+INIT variable x to array
+SET swapped to false
+FOR i equals 0, i is less than n, increment i 
+	IF x at the index of I is less than x at the index of i + 1 THEN
+		SET variable temp to the value of x at the index of i
+		SET the value of x at the index of i to the value at the index of x + 1
+		SET the value of x at the index of i + 1 to temp
+		SET swapped to true;
+	END IF
+END FOR
+DECREMENT n
+WHILE swapped is true
+	RETURN x 
+END WHILE
+END FUNCTION
+
+
+2. Write pseudocode for quicksort.
+
+FUNCTION quickSort(array)
+IF array length is less than or equal to 1 THEN
+	RETURN array
+ELSE 
+	INIT left, right, and sortedArray to empty arrays
+	INIT pivot to the last value of array
+	FOR i = 0, i is less than the length of array, increment i
+		IF the value of the array at index i is less than pivot
+			PUSH the value of the array at index i to left
+		ELSE
+			PUSH the value of the array at index i to right
+		END IF
+	END FOR
+RETURN concatenated sortedArray plus CALL quickSort(left) plus pivot plus CALL quickSort(right)
+END IF
+    
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+Bubble sort (#1), because it has a nested loops has a worst-case time complexity of O(n^2).
+Quick sort (#2) is recursive and therefore also has a worst-case time complexity of O(n^2).
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+Bucket sort is a sorting algorithm that relies on putting the elements in an array into separate "buckets," sorting the values in those buckets by calling bucket sort recursively (or utilizing another sort method), and then placing those sorted items back into the original array. The ideal input for bucket sort would be an array with values that are evenly distributed across the length of the array (ex. 1, 3, 5, 9 vs. 1, 1, 567, 566).  
