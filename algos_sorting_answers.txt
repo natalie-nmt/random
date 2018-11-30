@@ -41,8 +41,7 @@ END IF
 
 3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
 
-Bubble sort (#1), because it has a nested loops has a worst-case time complexity of O(n^2).
-Quick sort (#2) is recursive and therefore also has a worst-case time complexity of O(n^2).
+Both merge sort and quick sort involve breaking up an array into smaller, more manageable chunks. This may not be as efficient as comparison sorts for very small data sets, but for large arrays and data sets, this means you're not repeating a comparison operation over and over again, and you're also not moving data points as far because you've broken the array into smaller chunks.
 
 4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
 
