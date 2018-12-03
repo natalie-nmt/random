@@ -4,19 +4,20 @@ FUNCTION bubbleSort(array)
 INIT variable swapped to zero
 INIT variable n to array length -1
 INIT variable x to array
-SET swapped to false
-FOR i equals 0, i is less than n, increment i 
-	IF x at the index of I is less than x at the index of i + 1 THEN
-		SET variable temp to the value of x at the index of i
-		SET the value of x at the index of i to the value at the index of x + 1
-		SET the value of x at the index of i + 1 to temp
-		SET swapped to true;
-	END IF
-END FOR
-DECREMENT n
+DO
+	SET swapped to false
+	FOR i equals 0, i is less than n, increment i 
+		IF x at the index of I is less than x at the index of i + 1 THEN
+			SET variable temp to the value of x at the index of i
+			SET the value of x at the index of i to the value at the index of x + 1
+			SET the value of x at the index of i + 1 to temp
+			SET swapped to true;
+		END IF
+	END FOR
+	DECREMENT n
 WHILE swapped is true
-	RETURN x 
-END WHILE
+END DO/WHILE
+RETURN x 
 END FUNCTION
 
 
